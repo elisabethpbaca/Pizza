@@ -13,5 +13,7 @@ class Structure {
         bool isLocked;
         bool isDestructable;
     public:
-        
-}
+
+};
+
+#endif

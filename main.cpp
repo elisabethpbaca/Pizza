@@ -5,6 +5,16 @@
 
 using namespace std;
 
+string to_lower(string stringToLower) {
+    for(int i = 0; i < stringToLower.size(); i++) {
+        stringToLower.at(i) = tolower(stringToLower.at(i));
+    }
+    return stringToLower;
+}
+
+bool contains(string container, string searchString) {
+    return container.find(searchString) != std::string::npos;
+}
 
 
 int main(void){
@@ -17,9 +27,7 @@ bool alive = 1;
 
     while(alive && getline(cin, command)) {
 
-        for(int i = 0; i < command.size(); i++) {
-            command.at(i) = tolower(command.at(i));
-        }
+        command = to_lower(command);
 
         if(command.find("go") != std::string::npos || command.find("walk") != std::string::npos || command.find("head") != std::string::npos){
 
