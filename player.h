@@ -34,6 +34,7 @@ class Player {
         int get_luck(void);
         vector<Object> get_inventory(void);
         Point get_position(void);
+        bool search_inventory(int type, string itemName);
 
         // Setters
         void set_health(float health);

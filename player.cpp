@@ -1,4 +1,5 @@
 #include "player.h"
+#include <string>
 using namespace std;
 
 Player::Player(void) {
@@ -122,6 +123,15 @@ void Player::add_to_inventory(Object itemToAdd) {
     }else {
         cout << "There is not enough room in your inventory!" << endl;
     }
+}
+
+bool Player::search_inventory(int type, string itemName) {
+    for(int i = 0; i < inventory.size(); i++) {
+        if(inventory.at(i).get_item_type() == type && inventory.at(i).get_item() == itemName) {
+            return true;
+        }
+    }
+    return false;
 }
 
 void Player::go_north(void) {
