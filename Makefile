@@ -1,7 +1,7 @@
 all: main
 
 main: main.o player.o point.o object.o map.o
-	g++ main.o player.o point.o object.o map.o -o main
+	g++ main.o player.o point.o object.o map.o -o Pizza
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -18,7 +18,5 @@ object.o: object.cpp
 map.o: map.cpp
 	g++ -c map.cpp
 
-
-
 clean:
-	rm -f player point object main map *.o
+	rm -f player point object main map Pizza *.o

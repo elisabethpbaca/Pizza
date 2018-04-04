@@ -2,9 +2,11 @@
 using namespace std;
 
 Map::Map(void) {
-    objectGrid[0][1].set_object(Weapon, "rope", 100, 100);
+    Utility rope;
+    rope.set_name("rope");
+    objectGrid[0][1].push_back(rope);
 }
 
-Object Map::get_object(int x, int y) {
+vector<Object> Map::get_objects(int x, int y) {
     return objectGrid[x][y];
 }

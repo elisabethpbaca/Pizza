@@ -5,8 +5,11 @@
 #include <vector>
 #include "point.h"
 #include "object.h"
+#include "child.h"
 
 using namespace std;
+
+class Object;
 
 class Player {
     private:
@@ -34,7 +37,7 @@ class Player {
         int get_luck(void);
         vector<Object> get_inventory(void);
         Point get_position(void);
-        bool search_inventory(int type, string itemName);
+        bool search_inventory(Child type, string itemName);
 
         // Setters
         void set_health(float health);
@@ -48,9 +51,12 @@ class Player {
         void set_intelligence(int intelligence);
         void set_agility(int agility);
         void set_luck(int luck);
-        void add_to_inventory(Object itemToAdd);
+        void set_inventory(vector<Object> inventory);
 
         // Mutators
+        void add_to_inventory(Object itemToAdd);
+        void delete_from_inventory(Object itemToDelete);
+        void delete_from_inventory(Object* objPointer);
         void go_north(void);
         void go_east(void);
         void go_south(void);
