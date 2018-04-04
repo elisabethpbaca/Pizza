@@ -26,7 +26,9 @@ bool contains(string container, string str1, string str2, string str3, string st
 
 void get_object_here(string objectToGet);
 
-void see_objects_here();
+void see_obstacles_here(void);
+
+void see_objects_here(void);
 
 void move(string moveCommand);
 

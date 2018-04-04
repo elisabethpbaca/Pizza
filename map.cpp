@@ -9,10 +9,21 @@ Map::Map(void) {
     rope->set_name("rope");
     objectGrid[0][1].push_back(rope);
     objectGrid[2][2].push_back(gun);
+
+    Wall* w1 = new Wall;
+
+    structureGrid[1][1].push_back(w1);
+    structureGrid[2][2].push_back(w1);
+    structureGrid[3][1].push_back(w1);
+
 }
 
 vector<Object*> Map::get_objects(int x, int y) {
     return objectGrid[x][y];
+}
+
+vector<Structure*> Map::get_structures(int x, int y) {
+    return structureGrid[x][y];
 }
 
 void Map::delete_object(int x, int y, string itemName) {

@@ -1,19 +1,29 @@
 #ifndef _STRUCTURE
 #define _STRUCTURE
 
+#include "child.h"
 
 using namespace std;
 
-enum StructType { Wall, Door, WindowedWall, Trapdoor, Stairs };
-
 class Structure {
-    private:
+    protected:
         StructType structureType;
-        float durabilityPoints;
-        bool isLocked;
-        bool isDestructable;
     public:
+        // Constructors
+        Structure(void);
+
+        // Getters
+        StructType get_class(void);
 
 };
+
+class Wall : public Structure {
+    private:
+
+    public:
+        // Constructors
+        Wall(void);
+};
+
 
 #endif
