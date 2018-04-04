@@ -27,7 +27,20 @@ class Object {
         Child get_class(void);
 
         // Mutators
-        void remove_from(vector<Object> &inventory);
+        void remove_from(vector<Object*> &inventory);
+
+        // Virtual functions
+        // virtual void set_damage_points(float damagePoints) = 0;
+        // virtual void set_durability_points(float durabilityPoints) = 0;
+        // virtual void set_uses(int uses) = 0;
+        // virtual void set_revive_points(float revivePoints) = 0;
+        //
+        // virtual float get_damage_points(void) = 0;
+        // virtual float get_durability_points(void) = 0;
+        // virtual int get_uses(void) = 0;
+        // virtual float get_revive_points(void) = 0;
+        //
+        // virtual void use(Player* P1) = 0;
 
 };
 

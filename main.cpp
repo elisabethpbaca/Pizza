@@ -49,12 +49,13 @@ bool contains(string container, string str1, string str2, string str3, string st
 }
 
 void get_object_here(string objectToGet) {
-    vector<Object> itemsHere = GAMEMAP.get_objects(P1.get_position().getX(), P1.get_position().getY());
+    vector<Object*> itemsHere = GAMEMAP.get_objects(P1.get_position().getX(), P1.get_position().getY());
+
     if(itemsHere.size() != 0) {
         for(int i = 0; i < itemsHere.size(); i++) {
-            if(contains(objectToGet, itemsHere.at(i).get_name())) {
+            if(contains(objectToGet, itemsHere.at(i)->get_name())) {
                 P1.add_to_inventory(itemsHere.at(i));
-                cout << "You took the " << objectToGet << endl;
+                cout << "You took the " << itemsHere.at(i)->get_name() << endl;
             }else {
                 cout << "There is no " << objectToGet << " here." << endl;
             }
@@ -63,10 +64,10 @@ void get_object_here(string objectToGet) {
 }
 
 void see_objects_here() {
-    vector<Object> itemsHere = GAMEMAP.get_objects(P1.get_position().getX(), P1.get_position().getY());
+    vector<Object*> itemsHere = GAMEMAP.get_objects(P1.get_position().getX(), P1.get_position().getY());
     if(itemsHere.size() != 0) {
         for(int i = 0; i < itemsHere.size(); i++) {
-            cout << "There is a " << itemsHere.at(i).get_name() << " here." << endl;
+            cout << "There is a " << itemsHere.at(i)->get_name() << " here." << endl;
         }
     }
 }
@@ -104,7 +105,7 @@ bool alive = 1;
             cout << "You are at coordinates: " << P1.get_position() << endl;
         }else if(command.find("kill") != std::string::npos && (command.find("yourself") != std::string::npos || command.find("myself") != std::string::npos)){
             if(command.find("rope") != std::string::npos){
-                if(P1.search_inventory(Utility, "rope")) {
+                if(P1.search_inventory(cUtility, "rope")) {
                     cout << "You hung yourself" << endl;
                     alive = 0;
                 }else {

@@ -15,7 +15,7 @@ class Player {
     private:
         float health, armor, hunger, thirst;
         int strength, perception, endurance, charisma, intelligence, agility, luck, inventorySizeLimit;
-        vector<Object> inventory;
+        vector<Object*> inventory;
         Point position;
 
     public:
@@ -35,7 +35,7 @@ class Player {
         int get_intelligence(void);
         int get_agility(void);
         int get_luck(void);
-        vector<Object> get_inventory(void);
+        vector<Object*> get_inventory(void);
         Point get_position(void);
         bool search_inventory(Child type, string itemName);
 
@@ -51,10 +51,10 @@ class Player {
         void set_intelligence(int intelligence);
         void set_agility(int agility);
         void set_luck(int luck);
-        void set_inventory(vector<Object> inventory);
+        void set_inventory(vector<Object*> inventory);
 
         // Mutators
-        void add_to_inventory(Object itemToAdd);
+        void add_to_inventory(Object* itemToAdd);
         void delete_from_inventory(Object itemToDelete);
         void delete_from_inventory(Object* objPointer);
         void go_north(void);

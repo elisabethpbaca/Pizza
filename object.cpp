@@ -20,20 +20,26 @@ Child Object::get_class(void) {
     return objectClass;
 }
 
-void Object::remove_from(vector<Object> &inventory) {
-    inventory.erase(inventory.begin() + (this - &inventory.at(0)));
-    delete this;
+void Object::remove_from(vector<Object*> &inventory) {
+    for(int i = 0; i < inventory.size(); i++) {
+        if(inventory.at(i) = this){
+            inventory.erase(inventory.begin() + i);
+            delete this;
+        }
+    }
+    // inventory.erase(inventory.begin() + (this - &inventory.at(0)));
+    // delete this;
 }
 
 Weapon::Weapon(void) {
-    objectClass = Child::Weapon;
+    objectClass = Child::cWeapon;
     itemName = "Common Sword";
     damagePoints = 10;
     durabilityPoints = 10;
 }
 
 Weapon::Weapon(string itemName, float damagePoints, float durabilityPoints) {
-    objectClass = Child::Weapon;
+    objectClass = Child::cWeapon;
     this->itemName = itemName;
     this->damagePoints = damagePoints;
     this->durabilityPoints = durabilityPoints;
@@ -56,14 +62,14 @@ float Weapon::get_durability_points(void) {
 }
 
 Medical::Medical(void) {
-    objectClass = Child::Medical;
+    objectClass = Child::cMedical;
     itemName = "Bandages";
     revivePoints = 20;
     uses = 1;
 }
 
 Medical::Medical(string itemName, int uses, float revivePoints) {
-    objectClass = Child::Medical;
+    objectClass = Child::cMedical;
     this->itemName = itemName;
     this->revivePoints = revivePoints;
     this->uses = uses;
@@ -92,7 +98,7 @@ void Medical::use(Player* P1) {
     }
     uses -= 1;
     if(uses < 0) {
-        vector<Object> newInventory = P1->get_inventory();
+        vector<Object*> newInventory = P1->get_inventory();
         this->remove_from(newInventory);
         P1->set_inventory(newInventory);
     }
@@ -100,14 +106,17 @@ void Medical::use(Player* P1) {
 
 Utility::Utility(void) {
     itemName = "";
+    objectClass = Child::cUtility;
 }
 
 Utility::Utility(string itemName) {
     this->itemName = itemName;
+    objectClass = Child::cUtility;
 }
 
 Light::Light(void) {
     lightOn = 0;
+    objectClass = Child::cLight;
 }
 
 void Light::turn_on(void) {

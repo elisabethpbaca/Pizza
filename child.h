@@ -1,6 +1,6 @@
 #ifndef _CHILD
 #define _CHILD
 
-enum Child { Nothing, Weapon, Medical, Utility, Light };
+enum Child { Nothing, cWeapon, cMedical, cUtility, cLight };
 
 #endif

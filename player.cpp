@@ -117,19 +117,19 @@ void Player::set_luck(int luck) {
     this->luck = luck;
 }
 
-vector<Object> Player::get_inventory(void) {
+vector<Object*> Player::get_inventory(void) {
     return inventory;
 }
 
-void Player::delete_from_inventory(Object itemToDelete) {
-    itemToDelete.remove_from(inventory);
+void Player::delete_from_inventory(Object* itemToDelete) {
+    itemToDelete->remove_from(inventory);
 }
 
 // void Player::delete_from_inventory(Object* objPointer) {
 //     *objPointer->remove_from(inventory);
 // }
 
-void Player::add_to_inventory(Object itemToAdd) {
+void Player::add_to_inventory(Object* itemToAdd) {
     if(inventory.size() < inventorySizeLimit) {
         inventory.push_back(itemToAdd);
     }else {
@@ -137,13 +137,13 @@ void Player::add_to_inventory(Object itemToAdd) {
     }
 }
 
-void Player::set_inventory(vector<Object> inventory) {
+void Player::set_inventory(vector<Object*> inventory) {
     this->inventory = inventory;
 }
 
 bool Player::search_inventory(Child type, string itemName) {
     for(int i = 0; i < inventory.size(); i++) {
-        if(inventory.at(i).get_class() == type && inventory.at(i).get_name() == itemName) {
+        if(inventory.at(i)->get_class() == type && inventory.at(i)->get_name() == itemName) {
             return true;
         }
     }
