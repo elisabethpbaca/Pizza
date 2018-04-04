@@ -14,6 +14,7 @@ class Map {
         Map(void);
 
         vector<Object*> get_objects(int x, int y);
+        void delete_object(int x, int y, string itemName);
 };
 
 

@@ -121,6 +121,13 @@ vector<Object*> Player::get_inventory(void) {
     return inventory;
 }
 
+void Player::show_inventory(void) {
+    cout << endl << "Your Inventory" << endl;
+    for(int i = 0; i < inventory.size(); i++) {
+        cout << i+1 << ": " << inventory.at(i)->get_name() << endl;
+    }
+}
+
 void Player::delete_from_inventory(Object* itemToDelete) {
     itemToDelete->remove_from(inventory);
 }

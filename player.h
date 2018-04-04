@@ -57,6 +57,7 @@ class Player {
         void add_to_inventory(Object* itemToAdd);
         void delete_from_inventory(Object itemToDelete);
         void delete_from_inventory(Object* objPointer);
+        void show_inventory(void);
         void go_north(void);
         void go_east(void);
         void go_south(void);
