@@ -15,6 +15,8 @@ class Map {
     public:
         Map(void);
 
+        void add_object(Object*, int x, int y);
+
         vector<Object*> get_objects(int x, int y);
         vector<Structure*> get_structures(int x, int y);
 

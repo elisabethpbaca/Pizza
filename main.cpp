@@ -19,22 +19,15 @@ bool alive = 1;
 
         if(contains(command, "go", "walk", "head")) {
             move(command);
-            cout << "You are at coordinates: " << P1.get_position() << endl;
 
         }else if(contains(command, "kill") && contains(command, "self", "myself", "yourself")) {
-            if(contains(command, "rope")) {
-                if(P1.search_inventory(cUtility, "rope")) {
-                    cout << "You hung yourself" << endl;
-                    alive = 0;
-                }else {
-                    cout << "You don't have a rope :(" << endl;
-                }
-            }else {
-                cout << "Kill yourself with?" << endl;
-            }
+            alive = try_suicide(command);
 
         }else if(contains(command, "take", "grab", "pick up")){
             get_object_here(command);
+
+        }else if(contains(command, "drop", "set down")){
+            drop_object_here(command);
 
         }else if(contains(command, "inventory", "items")){
             P1.show_inventory();
@@ -55,7 +48,7 @@ bool alive = 1;
             cout << "I'm not sure what you mean, type 'help' for directions." << endl;
         }
 
-        cout << ">";
+        cout << endl << ">";
     }
 
     cout << "GAME OVER" << endl << endl;

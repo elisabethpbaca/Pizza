@@ -52,8 +52,22 @@ void get_object_here(string objectToGet) {
                 GAMEMAP.delete_object(P1.get_position().getX(), P1.get_position().getY(), itemsHere.at(i)->get_name());
                 cout << "You took the " << itemsHere.at(i)->get_name() << endl;
             }else {
-                cout << "There is no " << objectToGet << " here." << endl;
+                cout << "That is not an object here." << endl;
             }
+        }
+    }else {
+        cout << "That is not an object here." << endl;
+    }
+}
+
+void drop_object_here(string command) {
+    for(int i = 0; i < P1.get_inventory().size(); i++) {
+        if(contains(command, P1.get_inventory().at(i)->get_name())) {
+            GAMEMAP.add_object(P1.get_inventory().at(i), P1.get_position().getX(), P1.get_position().getY());
+            vector<Object*> newInventory = P1.get_inventory();
+            cout << "You dropped the " << newInventory.at(i)->get_name() << endl;
+            newInventory.erase(newInventory.begin() + i);
+            P1.set_inventory(newInventory);
         }
     }
 }
@@ -106,6 +120,27 @@ void see_objects_here(void) {
         }
     }
     see_obstacles_here();
+}
+
+bool try_suicide(string command) {
+    if(contains(command, "rope")) {
+        if(P1.search_inventory(cUtility, "rope")) {
+            cout << "You hung yourself" << endl;
+            return 0;
+        }else {
+            cout << "You don't have a rope :(" << endl;
+        }
+    }else if(contains(command, "sword")){
+        if(P1.search_inventory(cWeapon, "sword")) {
+            cout << "You stabbed yourself" << endl;
+            return 0;
+        }else {
+            cout << "You don't have a sword :(" << endl;
+        }
+    }else {
+        cout << "Kill yourself with?" << endl;
+    }
+    return 1;
 }
 
 void move(string moveCommand) {

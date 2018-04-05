@@ -26,9 +26,13 @@ bool contains(string container, string str1, string str2, string str3, string st
 
 void get_object_here(string objectToGet);
 
+void drop_object_here(string command);
+
 void see_obstacles_here(void);
 
 void see_objects_here(void);
+
+bool try_suicide(string command);
 
 void move(string moveCommand);
 
