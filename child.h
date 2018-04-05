@@ -3,6 +3,6 @@
 
 enum Child { Nothing, cWeapon, cMedical, cUtility, cLight };
 
-enum StructType { None, cWall, cDoor, };
+enum StructType { None, cWall, cDoor, cFoliage };
 
 #endif

@@ -39,8 +39,14 @@ bool alive = 1;
         }else if(contains(command, "inventory", "items")){
             P1.show_inventory();
 
+        }else if(contains(command, "status", "health", "my status")){
+            P1.show_stats();
+
+        }else if(contains(command, "help")){
+            show_help();
+
         }else {
-            cout << "I'm not sure what you mean" << endl;
+            cout << "I'm not sure what you mean, type 'help' for directions." << endl;
         }
 
         cout << ">";

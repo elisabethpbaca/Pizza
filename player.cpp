@@ -3,15 +3,17 @@
 using namespace std;
 
 Player::Player(void) {
-    position.setPoint(0, 0);
-    health = armor = hunger = thirst = 100;
+    position.setPoint(3, 4);
+    health = 100;
+    armor = 0;
     strength = perception = endurance = charisma = intelligence = agility = luck = 5;
-    inventorySizeLimit = 10;
+    inventorySizeLimit = 5;
 }
 
 Player::Player(int strength, int perception, int endurance, int charisma, int intelligence, int agility, int luck) {
     position.setPoint(0, 0);
-    health = armor = hunger = thirst = 100;
+    health = 100;
+    armor = 0;
     this->strength = strength;
     this->perception = perception;
     this->endurance = endurance;
@@ -27,14 +29,6 @@ float Player::get_health(void) {
 
 float Player::get_armor(void) {
     return armor;
-}
-
-float Player::get_hunger(void) {
-    return hunger;
-}
-
-float Player::get_thirst(void) {
-    return thirst;
 }
 
 int Player::get_strength(void) {
@@ -79,14 +73,6 @@ void Player::set_health(float health) {
 
 void Player::set_armor(float armor) {
     this->armor = armor;
-}
-
-void Player::set_hunger(float hunger) {
-    this->hunger = hunger;
-}
-
-void Player::set_thirst(float thirst) {
-    this->thirst = thirst;
 }
 
 void Player::set_strength(int strength) {
@@ -171,4 +157,10 @@ void Player::go_south(void) {
 
 void Player::go_west(void) {
     position.setPoint(position.getX() - 1, position.getY());
+}
+
+void Player::show_stats(void) {
+    cout << endl << "Status" << endl;
+    cout << "Health: " << health << endl;
+    cout << "Armor: " << armor << endl;
 }

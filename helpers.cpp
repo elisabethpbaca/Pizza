@@ -90,6 +90,8 @@ void see_obstacles_here(void) {
             for(int i = 0; i < structuresHere.size(); i++) {
                 if(structuresHere.at(i)->get_class() == cWall) {
                     cout << "There is a wall " << direction << endl;
+                }else if(structuresHere.at(i)->get_class() == cFoliage){
+                    cout << "There is dense foliage " << direction << endl;
                 }
             }
         }
@@ -116,47 +118,53 @@ void move(string moveCommand) {
             if(structuresHere.at(i)->get_class() == cWall){
                 cout << "Can't go north, a wall blocks your path." << endl;
                 blocked = 1;
+            }else if(structuresHere.at(i)->get_class() == cFoliage){
+                cout << "Can't go north, dense foliage blocks your path." << endl;
+                blocked = 1;
             }
         }
         if(!blocked) {
             P1.go_north();
         }
-    }
-
-    if(contains(moveCommand, "east")) {
+    }else if(contains(moveCommand, "east")) {
         bool blocked = 0;
         structuresHere = GAMEMAP.get_structures(P1.get_position().getX() + 1, P1.get_position().getY());
         for(int i = 0; i < structuresHere.size(); i++) {
             if(structuresHere.at(i)->get_class() == cWall){
                 cout << "Can't go east, a wall blocks your path." << endl;
                 blocked = 1;
+            }else if(structuresHere.at(i)->get_class() == cFoliage){
+                cout << "Can't go east, dense foliage blocks your path." << endl;
+                blocked = 1;
             }
         }
         if(!blocked) {
             P1.go_east();
         }
-    }
-
-    if(contains(moveCommand, "south")) {
+    }else if(contains(moveCommand, "south")) {
         bool blocked = 0;
         structuresHere = GAMEMAP.get_structures(P1.get_position().getX(), P1.get_position().getY() - 1);
         for(int i = 0; i < structuresHere.size(); i++) {
             if(structuresHere.at(i)->get_class() == cWall){
                 cout << "Can't go south, a wall blocks your path." << endl;
                 blocked = 1;
+            }else if(structuresHere.at(i)->get_class() == cFoliage){
+                cout << "Can't go south, dense foliage blocks your path." << endl;
+                blocked = 1;
             }
         }
         if(!blocked) {
             P1.go_south();
         }
-    }
-
-    if(contains(moveCommand, "west")) {
+    }else if(contains(moveCommand, "west")) {
         bool blocked = 0;
         structuresHere = GAMEMAP.get_structures(P1.get_position().getX() - 1, P1.get_position().getY());
         for(int i = 0; i < structuresHere.size(); i++) {
             if(structuresHere.at(i)->get_class() == cWall){
                 cout << "Can't go west, a wall blocks your path." << endl;
+                blocked = 1;
+            }else if(structuresHere.at(i)->get_class() == cFoliage){
+                cout << "Can't go west, dense foliage blocks your path." << endl;
                 blocked = 1;
             }
         }
@@ -166,4 +174,23 @@ void move(string moveCommand) {
     }
 
     see_objects_here();
+}
+
+void show_help(void) {
+    cout << "Welcome to Pizza, a game thought up by visionaries Bailey and Spencer" << endl << endl
+    << "Pizza is a comand line game where the user controls their player by typing in commands. Most commands will be in the form '[verb] [noun]' such as 'grab sword' or 'go north'. Some commands may take a few more options such as 'attack guard with sword' or 'unlock door with key'. Be careful with your commands, mixing keywords may cause multiple things to happen at once. This may be problematic if you are new and still learning, but could be used as an advantage for an experienced user." << endl << endl
+    << "[Commands]" << endl
+    << "go [direction]:" << endl
+    << "        *[direction] {north, east, west, south}" << endl
+    << "take [item]" << endl
+    << "        *[item] {common sword, potion of healing, rope, etc}" << endl
+    << "            *NOTE [item] must be the exact name of the item you wish to grab" << endl
+    << "attack [enemy] with [weapon]" << endl
+    << "        *[enemy] {guard, zombie, your mom, etc}" << endl
+    << "            *NOTE [enemy] must be the exact name of the enemy you wish to attack" << endl
+    << "        *[weapon] {common sword, daggar, ar-15, etc}" << endl
+    << "            *NOTE [weapon] must be the exact name of the weapon you wish to attack with" << endl
+    << "There are other commands that can be used through the game" << endl << endl
+    << "[Story]" << endl
+    << "You are an ex-officer for the Israeli Army, whose fiance (Jenn-Long(a)-y) was kidnapped by gang of Jawas. It is your duty to rescue her! On your journey across dangerous terrains, you encounter many obstacles that stand in the way of Jennay’s freedom.  Will you save her from eminent death, or die trying?" << endl << endl;
 }

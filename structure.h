@@ -25,5 +25,13 @@ class Wall : public Structure {
         Wall(void);
 };
 
+class Foliage : public Structure {
+    private:
+
+    public:
+        // Constructors
+        Foliage(void);
+};
+
 
 #endif

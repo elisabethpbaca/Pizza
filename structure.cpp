@@ -13,3 +13,7 @@ StructType Structure::get_class(void) {
 Wall::Wall(void) {
     structureType = cWall;
 }
+
+Foliage::Foliage(void) {
+    structureType = cFoliage;
+}

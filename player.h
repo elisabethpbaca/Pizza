@@ -13,7 +13,7 @@ class Object;
 
 class Player {
     private:
-        float health, armor, hunger, thirst;
+        float health, armor;
         int strength, perception, endurance, charisma, intelligence, agility, luck, inventorySizeLimit;
         vector<Object*> inventory;
         Point position;
@@ -62,6 +62,7 @@ class Player {
         void go_east(void);
         void go_south(void);
         void go_west(void);
+        void show_stats(void);
 
 };
 

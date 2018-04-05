@@ -32,4 +32,6 @@ void see_objects_here(void);
 
 void move(string moveCommand);
 
+void show_help(void);
+
 #endif
