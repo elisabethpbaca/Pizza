@@ -34,4 +34,6 @@ void move(string moveCommand);
 
 void show_help(void);
 
+void show_map(void);
+
 #endif

@@ -45,6 +45,12 @@ bool alive = 1;
         }else if(contains(command, "help")){
             show_help();
 
+        }else if(contains(command, "map")){
+            if(P1.search_inventory(cUtility, "map")) {
+                show_map();
+            }else {
+                cout << "You don't have a map :(" << endl;
+            }
         }else {
             cout << "I'm not sure what you mean, type 'help' for directions." << endl;
         }

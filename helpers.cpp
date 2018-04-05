@@ -190,7 +190,29 @@ void show_help(void) {
     << "            *NOTE [enemy] must be the exact name of the enemy you wish to attack" << endl
     << "        *[weapon] {common sword, daggar, ar-15, etc}" << endl
     << "            *NOTE [weapon] must be the exact name of the weapon you wish to attack with" << endl
-    << "There are other commands that can be used through the game" << endl << endl
+    << "There are other commands such as show map that can be used through the game" << endl << endl
     << "[Story]" << endl
     << "You are an ex-officer for the Israeli Army, whose fiance (Jenn-Long(a)-y) was kidnapped by gang of Jawas. It is your duty to rescue her! On your journey across dangerous terrains, you encounter many obstacles that stand in the way of Jennay’s freedom.  Will you save her from eminent death, or die trying?" << endl << endl;
+}
+
+void show_map(void) {
+    cout << "17██████████████████████                  " << endl;
+    cout << "16██████  ██████████████  Isreali Customs " << endl;
+    cout << "15██████  ██████████████                  " << endl;
+    cout << "14██████  ██████████████                  " << endl;
+    cout << "13██████  ████████████████                " << endl;
+    cout << "12██^^^^  //    ████████████              " << endl;
+    cout << "11██^^^^  //    ██████████████████__      " << endl;
+    cout << "10██^^^^  //                        ██████" << endl;
+    cout << "09██^^^^  //    ██████████████████  ██████" << endl;
+    cout << "08██████  ████████████████████████  ██████" << endl;
+    cout << "07██████  ████████████████████████  ██████" << endl;
+    cout << "06██████  ████████████__██__██__██  ██████" << endl;
+    cout << "05██           ]  [   __  __  __    ██████" << endl;
+    cout << "04  |     ████████████  ██  ██  ██  ██████" << endl;
+    cout << "03██  __  ████████████████████████████████" << endl;
+    cout << "02████  ██████████████████████████████████" << endl;
+    cout << "01████████████████████████████████████████" << endl;
+    cout << "  0102030405060708091011121314151617181920" << endl;
+    cout << "Your coords: " << P1.get_position() << endl;
 }

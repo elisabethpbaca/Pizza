@@ -2,6 +2,8 @@
 using namespace std;
 
 Map::Map(void) {
+    Utility* u1 = new Utility;
+    u1->set_name("map");
     Weapon* a1 = new Weapon;
     a1->set_name("Common Sword");
     a1->set_damage_points(25);
@@ -12,6 +14,7 @@ Map::Map(void) {
     m1->set_uses(1);
     Wall* w1 = new Wall;
     Foliage* f1 = new Foliage;
+    objectGrid[3][5].push_back(u1);
     objectGrid[3][2].push_back(m1);
     objectGrid[1][4].push_back(a1);
 
