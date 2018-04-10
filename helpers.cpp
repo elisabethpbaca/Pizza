@@ -223,7 +223,7 @@ void show_help(void) {
     << "attack [enemy] with [weapon]" << endl
     << "        *[enemy] {guard, zombie, your mom, etc}" << endl
     << "            *NOTE [enemy] must be the exact name of the enemy you wish to attack" << endl
-    << "        *[weapon] {common sword, daggar, ar-15, etc}" << endl
+    << "        *[weapon] {sword, daggar, ar-15, etc}" << endl
     << "            *NOTE [weapon] must be the exact name of the weapon you wish to attack with" << endl
     << "There are other commands such as show map that can be used through the game" << endl << endl
     << "[Story]" << endl
