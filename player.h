@@ -5,11 +5,14 @@
 #include <vector>
 #include "point.h"
 #include "object.h"
+#include "enemy.h"
 #include "child.h"
 
 using namespace std;
 
 class Object;
+class Weapon;
+class Enemy;
 
 class Player {
     private:
@@ -63,6 +66,7 @@ class Player {
         void go_south(void);
         void go_west(void);
         void show_stats(void);
+        void attack(Enemy* enemyToAttack, Weapon* weaponToUse);
 
 };
 

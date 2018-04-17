@@ -6,18 +6,23 @@ Map::Map(void) {
     u1->set_name("map");
     Weapon* a1 = new Weapon;
     a1->set_name("sword");
-    a1->set_damage_points(25);
+    a1->set_damage_points(2);
     a1->set_durability_points(10);
     Medical* m1 = new Medical;
     m1->set_name("Potion of Healing");
     m1->set_revive_points(50);
     m1->set_uses(1);
-    Wall* w1 = new Wall;
-    Foliage* f1 = new Foliage;
     objectGrid[3][5].push_back(u1);
     objectGrid[3][2].push_back(m1);
     objectGrid[1][4].push_back(a1);
 
+    Enemy* e1 = new Enemy(Jawa);
+    Enemy* e2 = new Enemy(Fly);
+    enemyGrid[4][4].push_back(e1);
+    enemyGrid[2][5].push_back(e2);
+
+    Wall* w1 = new Wall;
+    Foliage* f1 = new Foliage;
     structureGrid[0][4].push_back(w1);
     structureGrid[1][3].push_back(w1);
     structureGrid[1][5].push_back(w1);
@@ -116,10 +121,24 @@ vector<Structure*> Map::get_structures(int x, int y) {
     return structureGrid[x][y];
 }
 
+vector<Enemy*> Map::get_enemies(int x, int y) {
+    return enemyGrid[x][y];
+}
+
 void Map::delete_object(int x, int y, string itemName) {
     for(int i = 0; i < objectGrid[x][y].size(); i++) {
         if(objectGrid[x][y].at(i)->get_name() == itemName) {
             objectGrid[x][y].erase(objectGrid[x][y].begin() + i);
+        }
+    }
+}
+
+void Map::kill_enemy(int x, int y, Enemy* enemyToKill) {
+    for(int i = 0; i < enemyGrid[x][y].size(); i++) {
+        if(enemyGrid[x][y].at(i) == enemyToKill && enemyGrid[x][y].at(i)->get_health() < 0.1) {
+            enemyGrid[x][y].erase(enemyGrid[x][y].begin() + i);
+            delete enemyToKill;
+            cout << "The " << enemyToKill->get_type() << " died" << endl;
         }
     }
 }

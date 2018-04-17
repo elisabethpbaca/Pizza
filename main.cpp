@@ -10,7 +10,6 @@ using namespace std;
 int main(void){
 string command;
 Object tempObject;
-bool alive = 1;
 
     cout << ">";
     while(alive && getline(cin, command)) {
@@ -43,6 +42,30 @@ bool alive = 1;
                 show_map();
             }else {
                 cout << "You don't have a map :(" << endl;
+            }
+        }else if(contains(command, "attack")){
+            Weapon* weapon = NULL;
+            for(int i = 0; i < P1.get_inventory().size(); i++) {
+                if(contains(command, P1.get_inventory().at(i)->get_name())){
+                    weapon = static_cast<Weapon*>(P1.get_inventory().at(i));
+                }
+            }
+            if(weapon != NULL) {
+                for(int i = 0; i < GAMEMAP.get_enemies(P1.get_position().getX(), P1.get_position().getY()).size(); i++) {
+                    if(contains(command, "jawa") && GAMEMAP.get_enemies(P1.get_position().getX(), P1.get_position().getY()).at(i)->get_type() == Jawa) {
+                        P1.attack(GAMEMAP.get_enemies(P1.get_position().getX(), P1.get_position().getY()).at(i), weapon);
+                    }else if(contains(command, "guard") && GAMEMAP.get_enemies(P1.get_position().getX(), P1.get_position().getY()).at(i)->get_type() == Guard) {
+                        P1.attack(GAMEMAP.get_enemies(P1.get_position().getX(), P1.get_position().getY()).at(i), weapon);
+                    }else if(contains(command, "zombie") && GAMEMAP.get_enemies(P1.get_position().getX(), P1.get_position().getY()).at(i)->get_type() == Zombie) {
+                        P1.attack(GAMEMAP.get_enemies(P1.get_position().getX(), P1.get_position().getY()).at(i), weapon);
+                    }else if(contains(command, "fly") && GAMEMAP.get_enemies(P1.get_position().getX(), P1.get_position().getY()).at(i)->get_type() == Fly) {
+                        P1.attack(GAMEMAP.get_enemies(P1.get_position().getX(), P1.get_position().getY()).at(i), weapon);
+                    }else {
+                        cout << "That is not an enemy here" << endl;
+                    }
+                }
+            }else {
+                cout << "You do not have that weapon" << endl;
             }
         }else {
             cout << "I'm not sure what you mean, type 'help' for directions." << endl;

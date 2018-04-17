@@ -9,8 +9,12 @@
 
 using namespace std;
 
+class Player;
+class Map;
+
 extern Map GAMEMAP;
 extern Player P1;
+extern bool alive;
 
 string to_lower(string stringToLower);
 

@@ -4,6 +4,7 @@ using namespace std;
 
 Map GAMEMAP;
 Player P1;
+bool alive = 1;
 
 string to_lower(string stringToLower) {
     for(int i = 0; i < stringToLower.size(); i++) {
@@ -112,6 +113,15 @@ void see_obstacles_here(void) {
     }
 }
 
+void see_enemies_here(void) {
+    vector<Enemy*> enemiesHere = GAMEMAP.get_enemies(P1.get_position().getX(), P1.get_position().getY());
+    for(int i = 0; i < enemiesHere.size(); i++) {
+        cout << "Thre is a " << enemiesHere.at(i)->get_type() << " here. He appears ";
+        if(!(enemiesHere.at(i)->is_hostile())) {cout << "not ";}
+        cout << "hostile" << endl;
+    }
+}
+
 void see_objects_here(void) {
     vector<Object*> itemsHere = GAMEMAP.get_objects(P1.get_position().getX(), P1.get_position().getY());
     if(itemsHere.size() != 0) {
@@ -120,6 +130,7 @@ void see_objects_here(void) {
         }
     }
     see_obstacles_here();
+    see_enemies_here();
 }
 
 bool try_suicide(string command) {

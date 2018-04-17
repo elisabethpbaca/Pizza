@@ -1,5 +1,7 @@
-#include "player.h"
 #include <string>
+#include <cmath>
+#include "player.h"
+#include "helpers.h"
 using namespace std;
 
 Player::Player(void) {
@@ -163,4 +165,36 @@ void Player::show_stats(void) {
     cout << endl << "Status" << endl;
     cout << "Health: " << health << endl;
     cout << "Armor: " << armor << endl;
+}
+
+void Player::attack(Enemy* enemyToAttack, Weapon* weaponToUse) {
+    if(search_inventory(cWeapon, weaponToUse->get_name())) {
+        if(luck > (rand()%10)) {
+            float beginHealth = enemyToAttack->get_health();
+            float damage = weaponToUse->get_damage_points();
+            float finalHealth = beginHealth - damage;
+            cout << "You attacked the " << enemyToAttack->get_type() << " and did " << damage << " points of damage" << endl;
+            enemyToAttack->set_health(finalHealth);
+            if(!(enemyToAttack->is_hostile())) {
+                enemyToAttack->set_hostile(1);
+                cout << "The " << enemyToAttack->get_type() << " is now hostile!" << endl;
+            }
+            if(finalHealth < 0.1) {
+                GAMEMAP.kill_enemy(static_cast<int>(position.getX()), static_cast<int>(position.getY()), enemyToAttack);
+            }
+        }else {
+            cout << "You attempted to attack the " << enemyToAttack->get_type() << " and missed" << endl;
+            if(!(enemyToAttack->is_hostile()) && (luck < (rand() % 10))) {
+                enemyToAttack->set_hostile(1);
+                cout << "The " << enemyToAttack->get_type() << " is now hostile!" << endl;
+            }else if(!(enemyToAttack->is_hostile())){
+                cout << "The " << enemyToAttack->get_type() << " did not notice you..." << endl;
+            }
+        }
+    }else {
+        //cout << "You do not have a " << weaponToUse->get_name() << endl;
+    }
+    if(enemyToAttack->is_hostile() && enemyToAttack->get_health() > 0.1) {
+        enemyToAttack->attack(this);
+    }
 }
